@@ -1,9 +1,4 @@
-package Chap14;
 
-/**
- * 2013.04.10
- * Michel
- */
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -27,7 +22,6 @@ public class QuizCardPlayer {
 	}
 	 
 	public void go(){
-		//创建并显示gui 
 		frame = new JFrame("Quiz Card Player");
 		JPanel mainPanel = new JPanel();
 		Font bigFont = new Font("sanserif",Font.BOLD,24);
@@ -57,19 +51,14 @@ public class QuizCardPlayer {
 	
 	public class NextCardListener implements ActionListener{
 		public void actionPerformed(ActionEvent ev){
-			//如果是个问题，显示答案，否则显示下一个问题
-			//改一个标识表明我们已经浏览了问题或答案
 			if(isShowAnswer){
-				//显示答案
 				display.setText(currentCard.getAnswer());
 				nextButton.setText("Next Card");
 				isShowAnswer = false;
-			} else { 
-				//显示问题
+			}else {
 				if(currentCardIndex<cardList.size()){
 					showNextCard();
 				} else {
-					//没有更多的卡片了
 					display.setText("That was last card");
 					nextButton.setEnabled(false);
 				}
@@ -79,8 +68,6 @@ public class QuizCardPlayer {
 	
 	public class OpenMenuListener implements ActionListener{
 		public void actionPerformed(ActionEvent ev){
-			//生成一个文件对话框
-			//让用户把一个卡片设置打开
 			JFileChooser fileOpen = new JFileChooser();
 			fileOpen.showOpenDialog(frame);
 			loadFile(fileOpen.getSelectedFile());
@@ -88,11 +75,6 @@ public class QuizCardPlayer {
 	}
 	
 	private void loadFile(File file){
-		//创建卡片的ArrayList，并从文本文件中读取它们
-		//调用OpenMenuListener事件处理器，每次从文本中读取一行
-		//告诉makeCard()方法创建一个新卡片
-		//(one line in the file holds both the question and answer,separated by a "/")
-		
 		cardList = new ArrayList<QuizCard>();
 		try{
 			BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -108,8 +90,6 @@ public class QuizCardPlayer {
 	}
 	
 	private void makeCard(String lineToParse){
-		//调用LoadFile方法，从文本文件中读取一行
-		//创建一个新的QuizCard，通过调用CardList把它加入ArrayList中
 		String[] result = lineToParse.split("/");
 		QuizCard card = new QuizCard(result[0], result[1]);
 		cardList.add(card);

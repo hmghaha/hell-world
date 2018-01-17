@@ -1,9 +1,4 @@
-package Chap14;
-  
-/**
- * 2013.04010
- * Michel
- */
+
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
@@ -23,7 +18,6 @@ public class QuizCardBuilder {
 	}
 	 
 	public void go(){
-		//创建并显示gui
 		frame = new JFrame("Quiz Card Builder");
 		JPanel mainPanel = new JPanel();
 		Font bigFont = new Font("sanserif",Font.BOLD,24);
@@ -56,6 +50,7 @@ public class QuizCardBuilder {
 		mainPanel.add(qScroller);
 		mainPanel.add(aLabel);
 		mainPanel.add(aScroller);
+		mainPanel.add(nextButton);
 		nextButton.addActionListener(new NextCardListener());
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
@@ -75,7 +70,6 @@ public class QuizCardBuilder {
 	
 	private class NextCardListener implements ActionListener{
 		public void actionPerformed(ActionEvent ev){
-			//向列表中增加当前卡片并清除文本域
 			QuizCard card = new QuizCard(question.getText(),answer.getText());
 			cardList.add(card);
 			clearCard();
@@ -84,8 +78,6 @@ public class QuizCardBuilder {
 	
 	private class SaveMenuListener implements ActionListener{
 		public void actionPerformed(ActionEvent ev){
-			//生成对话框
-			//输入用户名并保存设置
 			QuizCard card = new QuizCard(question.getText(),answer.getText());
 			cardList.add(card);
 			
@@ -97,7 +89,6 @@ public class QuizCardBuilder {
 	
 	private class NewMenuListener implements ActionListener{
 		public void actionPerformed(ActionEvent ev){
-			//清除card列表和文本域
 			cardList.clear();
 			clearCard();
 		}
@@ -110,14 +101,14 @@ public class QuizCardBuilder {
 	}
 	
 	private void saveFile(File file){
-		//把列表输出到一个文本文件
 		try{
-			BufferedWriter write = new BufferedWriter(new FileWriter(file));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 			
 			for(QuizCard card:cardList){
-				write.write(card.getQuestion() + "/");
-				write.write(card.getAnswer() + "\n");
+				writer.write(card.getQuestion() + "/");
+				writer.write(card.getAnswer() + "\r\n");
 			}
+			writer.close();
 		}catch(IOException ex){
 			System.out.println("couldn't write the cardList out");
 			ex.printStackTrace();

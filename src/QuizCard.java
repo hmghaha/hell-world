@@ -1,9 +1,4 @@
-package Chap14;
 
-/**
- * 2013.04.10
- * Michel
- */
 public class QuizCard {
 	private String question;
 	private String answer;
