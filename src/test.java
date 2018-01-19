@@ -19,11 +19,11 @@ public class test {
         char[] nums = str.toCharArray();
         long count = 0;
         int i = 0;
-        for(i = nums.length; i>= 5; i--){
-            if(nums[i]==0) count++;
+        for(i = nums.length-1; i>= 0; i--){
+            if((int)nums[i]==0) count++;
             else break;
         }
-        if(nums[i]==5) count++;
+        if((int)nums[i]==5) count++;
         return count;
     }
     
