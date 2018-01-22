@@ -16,7 +16,7 @@ public class SimpleChatClient {
 	public void go() {
 		JFrame frame = new JFrame("HMG Simple Chat Client");
 		JPanel mainPanel = new JPanel();
-		incoming = new JTextArea(15, 50);
+		incoming = new JTextArea(15, 30);
 		incoming.setLineWrap(true);
 		incoming.setWrapStyleWord(true);
 		incoming.setEditable(false);
