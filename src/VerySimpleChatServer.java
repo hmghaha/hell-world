@@ -4,10 +4,6 @@ import java.util.*;
 
 import javax.swing.text.StyledEditorKit.ItalicAction;
 
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
-import com.sun.org.apache.xpath.internal.operations.String;
-
-import sun.nio.cs.ext.ISCII91;
 
 public class VerySimpleChatServer {
 	
@@ -20,14 +16,14 @@ public class VerySimpleChatServer {
 			try {
 				sock = clientSocket;
 				InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
-				Reader = new BufferedReader(isReader);
+				reader = new BufferedReader(isReader);
 			}catch(Exception ex) {ex.printStackTrace();}
 		}
 		
 		public void run() {
 			String message;
 			try {
-				while((Message = Reader.readLine()) != null) {
+				while((message = reader.readLine()) != null) {
 					System.out.println("reader " + message);
 					tellEveryone(message);
 				}
@@ -58,12 +54,12 @@ public class VerySimpleChatServer {
 	}
 	
 	public void tellEveryone(String message) {
-		Iterator iterator  = clientOutputStreams.iterator();
+		Iterator it  = clientOutputStreams.iterator();
 		while(it.hasNext()) {
 			try {
 				PrintWriter writer = (PrintWriter) it.next();
-				Writer.println(message);
-				Writer.flush();
+				writer.println(message);
+				writer.flush();
 			}catch(Exception ex) {ex.printStackTrace();}
 		}
 	}
