@@ -28,6 +28,9 @@ public class NoteBook {
 	
 	public String[] list() {
 		String[] a = new String[notes.size()];
+//		for(int i = 0; i < notes.size(); i++) {
+//			a[i] = notes.get(i);
+//		}
 		notes.toArray(a);
 		return a;
 	}
