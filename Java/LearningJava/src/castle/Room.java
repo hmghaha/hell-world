@@ -1,32 +1,39 @@
 package castle;
 
+import java.awt.RenderingHints.Key;
+import java.util.HashMap;
+
 public class Room {
-    public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
+    private String description;
+    private HashMap<String, Room> exits = new HashMap<>();
 
     public Room(String description) 
     {
         this.description = description;
     }
-
-    public void setExits(Room north, Room east, Room south, Room west) 
+    
+    public void setExit(String dir,Room rm) 
     {
-        if(north != null)
-            northExit = north;
-        if(east != null)
-            eastExit = east;
-        if(south != null)
-            southExit = south;
-        if(west != null)
-            westExit = west;
+        exits.put(dir, rm);
     }
 
     @Override
     public String toString()
     {
         return description;
+    }
+    
+    public String showExits() {
+    	
+    	StringBuffer sb = new StringBuffer();
+    	for(String Key : exits.keySet()) {
+    		sb.append(Key);
+    		sb.append(" ");
+    	}
+    	return sb.toString();
+    }
+    
+    public Room getNextRoom(String direction) {
+    	return exits.get(direction);
     }
 }
