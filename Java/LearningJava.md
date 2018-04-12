@@ -18,7 +18,7 @@
 - static函数不能访问非static成员变量和成员函数；
 - 类函数（static函数）没有this，因为this是指向当前对象的引用，而类函数是无关对象的。
 
-## 对象容器
+### 对象容器
 - 容器（collection/container）就是具有自动增长容量的存放数据的一种数据结构。
 - 对象数组中每个元素都是对象的管理者（引用）而不是对象本身；
 - 1.java方法基本数据类型传值，对象类型传引用；
@@ -56,3 +56,33 @@
   ## 线程间通讯
   - 线程间通讯就是多个线程操作同一数据，但是操作动作不同。
   - 线程安全 synchronized()
+
+  # String
+  1. 
+  2. 判断
+  3. 转换
+  4. 替换
+    String replace(oldchar, newChar)
+  5. 切割
+    String[] split(regex)
+  6. 子串
+    String substring(begin)
+    String substring(begin, end) 包头不包尾
+  7. 转换，去除空格，比较
+    7.1. 大小写转换
+    String toUpperCase()
+    String toLowerCase()
+    7.2. 去除两端空格
+    String trim()
+  ## 应用
+  1. 字符串反转
+  - 转成数组，数组反转，转成字符串
+  2. 判断字符串A在B里出现了几次
+  - while（B.indexOf(A, pos+A.length()) ！= -1）{
+    pos = B.indexOf(A, pos+A.length()；
+  }
+  3. 获取两个字符串最大的公共子串
+  - 获取一个字符串的所有子串，判断子串是否是另一个字符串的子串
+  ## StringBuffer 
+  - StringBuffer 线程同步 效率低
+  - StringBuilder 线程不同步 效率高
