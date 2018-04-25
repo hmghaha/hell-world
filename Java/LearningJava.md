@@ -117,3 +117,4 @@
   - LinkedList 底层使用链表，增删快，查询慢
   - Vector 底层使用数组，历史遗留，增删查询慢；线程同步
 - Set 元素无序，不可重复
+  - HashSet 底层哈希表，根据HashCode和equals判断元素是否相同
