@@ -76,37 +76,44 @@
   1. 将原始异常设置为新异常的“原因” e2.initCause(e1)
 
 
-  # 多线程
-  ## 线程间通讯
-  - 线程间通讯就是多个线程操作同一数据，但是操作动作不同。
-  - 线程安全 synchronized()
+# 多线程
+## 线程间通讯
+- 线程间通讯就是多个线程操作同一数据，但是操作动作不同。
+- 线程安全 synchronized()
 
-  # String
-  1. 
-  2. 判断
-  3. 转换
-  4. 替换
-    String replace(oldchar, newChar)
-  5. 切割
-    String[] split(regex)
-  6. 子串
-    String substring(begin)
-    String substring(begin, end) 包头不包尾
-  7. 转换，去除空格，比较
-    7.1. 大小写转换
-    String toUpperCase()
-    String toLowerCase()
-    7.2. 去除两端空格
-    String trim()
-  ## 应用
-  1. 字符串反转
-  - 转成数组，数组反转，转成字符串
-  2. 判断字符串A在B里出现了几次
-  - while（B.indexOf(A, pos+A.length()) ！= -1）{
-    pos = B.indexOf(A, pos+A.length()；
-  }
-  3. 获取两个字符串最大的公共子串
-  - 获取一个字符串的所有子串，判断子串是否是另一个字符串的子串
-  ## StringBuffer 
-  - StringBuffer 线程同步 效率低
-  - StringBuilder 线程不同步 效率高
+# String
+1. 
+2. 判断
+3. 转换
+4. 替换
+  String replace(oldchar, newChar)
+5. 切割
+  String[] split(regex)
+6. 子串
+  String substring(begin)
+  String substring(begin, end) 包头不包尾
+7. 转换，去除空格，比较
+  7.1. 大小写转换
+  String toUpperCase()
+  String toLowerCase()
+  7.2. 去除两端空格
+  String trim()
+## 应用
+1. 字符串反转
+- 转成数组，数组反转，转成字符串
+2. 判断字符串A在B里出现了几次
+- while（B.indexOf(A, pos+A.length()) ！= -1）{
+  pos = B.indexOf(A, pos+A.length()；
+}
+3. 获取两个字符串最大的公共子串
+- 获取一个字符串的所有子串，判断子串是否是另一个字符串的子串
+## StringBuffer 
+- StringBuffer 线程同步 效率低
+- StringBuilder 线程不同步 效率高
+
+# 集合 Collection
+- List 元素有序，可重复
+  - ArrayList 底层使用数组，查询快，增删稍慢；线程不同步
+  - LinkedList 底层使用链表，增删快，查询慢
+  - Vector 底层使用数组，历史遗留，增删查询慢；线程同步
+- Set 元素无序，不可重复
